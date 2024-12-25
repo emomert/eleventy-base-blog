@@ -31,22 +31,29 @@
 	--text-color-link-active: #6969f7;
 	--text-color-link-visited: #a6a6f8;
 
-	--background-color: #D35400;
+	--background-color: #242038;
 }
 
 /* Add styles for the theme toggle button */
 .theme-toggle {
 	background: none;
-	border: 2px solid var(--text-color);
-	color: var(--text-color);
-	padding: 0.5em 1em;
-	border-radius: 5px;
+	border: none;
+	padding: 0.5em;
 	cursor: pointer;
-	font-size: 1em;
+	font-size: 1.2em;
 }
 
 .theme-toggle:hover {
 	opacity: 0.8;
+}
+
+/* Show different emoji based on theme */
+:root[data-theme="dark"] .theme-toggle-icon::before {
+	content: "🌙";
+}
+
+:root:not([data-theme="dark"]) .theme-toggle-icon::before {
+	content: "☀️";
 }
 
 /* Global stylesheet */
@@ -56,7 +63,7 @@
 
 @supports (view-transitions: 1) {
 	@view-transition {
-		navigation: auto;
+			navigation: auto;
 	}
 }
 
@@ -286,5 +293,10 @@ header {
 }
 .post-metadata time {
 	margin-right: 1em;
+}
+
+/* Remove the emoji from the HTML span */
+.theme-toggle-icon {
+	font-size: 1.2em;
 }
 
